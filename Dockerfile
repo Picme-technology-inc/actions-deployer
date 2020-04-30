@@ -14,9 +14,10 @@ RUN apt-get update \
     && apt-get install -y curl \
     && rm -rf /var/lib/apt/lists/*
 # Install Serverless
+COPY docker-entrypoint.sh /tmp/docker-entrypoint.sh
 RUN npm install -g serverless@1.65
 # Install Golang
 RUN curl https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz > /tmp/go.tar.gz
 RUN tar -C /usr/local -xzf /tmp/go.tar.gz
 
-ENTRYPOINT ["serverless"]
+ENTRYPOINT ["docker-entrypoint.sh"]
