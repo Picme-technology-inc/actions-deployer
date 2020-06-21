@@ -4,4 +4,4 @@ set -e
 
 npm install
 
-serverless $@
+npm run serverless $@

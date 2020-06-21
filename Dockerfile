@@ -22,8 +22,4 @@ RUN ln -snf /usr/local/go/bin/go /usr/bin/go
 # Install Serverless
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
-ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
-USER node
-RUN npm install -g serverless@1.73.1
-
 ENTRYPOINT ["/docker-entrypoint.sh"]
