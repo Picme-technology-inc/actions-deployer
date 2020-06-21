@@ -13,12 +13,17 @@ LABEL "com.github.actions.color"="red"
 RUN apt-get update \
     && apt-get install -y curl \
     && rm -rf /var/lib/apt/lists/*
-# Install Serverless
-COPY docker-entrypoint.sh /docker-entrypoint.sh
-RUN npm install -g serverless@1.65
+
 # Install Golang
 RUN curl https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz > /tmp/go.tar.gz
 RUN tar -C /usr/local -xzf /tmp/go.tar.gz
 RUN ln -snf /usr/local/go/bin/go /usr/bin/go
+
+# Install Serverless
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+
+ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+USER node
+RUN npm install -g serverless@1.73.1
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
