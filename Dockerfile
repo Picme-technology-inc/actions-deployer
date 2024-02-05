@@ -15,7 +15,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Golang
-RUN curl https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz > /tmp/go.tar.gz
+RUN curl https://go.dev/dl/go1.18.10.linux-amd64.tar.gz > /tmp/go.tar.gz
 RUN tar -C /usr/local -xzf /tmp/go.tar.gz
 RUN ln -snf /usr/local/go/bin/go /usr/bin/go
 
