@@ -15,8 +15,8 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Golang
-RUN curl https://go.dev/dl/go1.18.10.linux-amd64.tar.gz > /tmp/go.tar.gz
-RUN tar -C /usr/local -xzf /tmp/go.tar.gz
+RUN curl -L https://go.dev/dl/go1.18.10.linux-amd64.tar.gz > /tmp/go.tar.gz
+RUN tar -xzf /tmp/go.tar.gz -C /usr/local 
 RUN ln -snf /usr/local/go/bin/go /usr/bin/go
 
 # Install Serverless
